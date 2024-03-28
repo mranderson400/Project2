@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Reporting</title>
+</head>
+<body>
+    <h1>Sasquatch Websiting!!!</h1>
+
+    <h1> {{session.first_name}}</h1>
+    <h1>Report a Sighting</h1>
+    <a href="/welcome"> Back to Welcome</a>
+    <a href="/users/logout">Logout</a>
+    {% for message in get_flashed_messages(category_filter= ['reg'])%}
+    <p class="text-danger">{{message}}</p>
+    {% endfor %}
+
+    <div class="container">
+        <div>
+            <form action="/report/create" method="post">
+                <div>
+                    <label for="location" class="form-label">Location:</label>
+                    <input type="text" name="location" id="location">
+                </div>
+
+                <div>
+                    <label for="what_happened" class="form-label">What Happened:</label>
+                    <textarea name="what_happened" id="" cols="30" rows="10"></textarea>
+                </div>
+
+                <div>
+                    <label for="instructions" class="form-label">Instructions:</label>
+                    <textarea name="instructions" id="instructions" cols="30" rows="10"></textarea>
+                </div>
+                    
+                <div>
+                    <label for="date">Date of Sightings:</label>
+                    <input type="date" name="date">
+                </div>
+
+                <div>
+                    <label for="number_of">Number of Sightings:</label>
+                    <input type="number" name="number_of">
+                </div>
+                    
+                        
+                
+                <button>Report</button>
+            </form>
+        </div>
+
+    </div>
+
+
+
+
+
+</body>
+</html>

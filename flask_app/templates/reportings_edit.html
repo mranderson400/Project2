@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportings Edit</title>
+</head>
+<body>
+    <h1>Sasquatch Websiting</h1>
+
+    <h1> {{session.first_name}}</h1>
+    <h1>Reported Sightings</h1>
+    <a href="/welcome"> Back to Welcome</a>
+    <a href="/users/logout">Logout</a>
+    {% for message in get_flashed_messages(category_filter= ['reg'])%}
+    <p class="text-danger">{{message}}</p>
+    {% endfor %}
+
+    <div class="container">
+        <div>
+            <form action="/report/{{this_report.id}}/update" method="post">
+                <h1>Edit this Sighting</h1>
+                <div>
+                    <label for="location" class="form-label">Location</label>
+                    <input value="{{this_report.location}}" type="text" name="location" id="location">
+                </div>
+
+                <div>
+                    <label  for="what_happened" class="form-label">What happened</label>
+                    <textarea  name="what_happened" id="" cols="30" rows="10">{{this_report.what_happened}}</textarea>
+                </div>
+                    
+                <div>
+                    <label for="date">Reported Date:</label>
+                    <input value="{{this_report.date}}" type="date" name="date">
+                </div>
+
+                <div>
+                    <label for="number_of"></label>
+                    <input value="{{this_report.number_of}}" type="number" name="number_of">
+                </div>
+                    
+                        
+                
+                <input type="submit" value="Report">
+            </form>
+        </div>
+
+    </div>
+</body>
+</html>

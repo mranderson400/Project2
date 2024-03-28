@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View One Reportings</title>
+</head>
+<body>
+    <h1>Sasquatch Websiting</h1>
+    <h1>Welcome{{session.first_name}}</h1>
+    <a href="/welcome"> Welcome page</a>
+    <a href="/users/logout">Logout</a>
+
+    <p> {{this_report.location}} On {{this_report.date}} </p>
+    <p> What Happened:
+        <br> {{this_report.what_happened}}</p>
+    <p># of Sasquatches: {{this_report.number_of}}</p>
+    <p>Reported By: {{this_report.creator.first_name}} </p>
+
+
+
+</body>
+</html>

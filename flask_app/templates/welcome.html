@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+<body>
+    <h1>Sasquatch Websiting</h1>
+    <h1>{{ session.first_name }}</h1>
+    <h1>Reported Sightings</h1>
+    <a href="/report/new">Report a sighting</a>
+    <a href="/users/logout">Logout</a>
+
+    <div class="container">
+        {% if all_reports %}
+            {% for this_report in all_reports %}
+                <div class="box">
+                    <p>{{ this_report.location }} {{ this_report.date }}</p>
+                    <p>Reported By: {{ this_report.creator.first_name }}</p>
+                </div>
+                <div class="box2">
+                    <a href="/report/{{ this_report.id }}/view">view</a>
+                    {% if this_report.user_id == session['user_id'] %}
+                    | <a href="/report/{{ this_report.id }}/edit">Edit</a>
+                    | <a href="/report/{{ this_report.id }}/delete">Delete</a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No reports found.</p>
+        {% endif %}
+        {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+    </div>
+    
+</body>
+</html>
